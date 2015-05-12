@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
+  def index
+  end
   def create
     @user = User.from_auth(auth_hash)
-    self.current_user = @user
+    binding.pry
+    session[:user_id] = @user.id
     redirect_to '/'
   end
   def auth_hash
